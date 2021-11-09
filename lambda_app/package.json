@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "compile": "tsc src/**.ts",
     "run-local-lambda": "node test/local/index.js",
     "build": "mkdir lambda-app-build && cp -r src/** lambda-app-build && cp package* lambda-app-build && cd lambda-app-build && npm i --only=prod && zip -r lambda-app-build.zip . && cd ../",
     "clean": "rm -rf lambda-app-build || true && rm src/**/*.js || true",
