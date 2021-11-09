@@ -1,5 +1,5 @@
 import { handler as lambdaRouterHandler } from 'aws-lambda-router';
-import { getCardOnSiteByCardId, tapCard } from './paths/index.js';
+import { getCardOnSiteByCardId, tapCard } from './paths/index';
 
 export const handler = lambdaRouterHandler({
     proxyIntegration: {

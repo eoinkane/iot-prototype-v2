@@ -1,5 +1,5 @@
-import { connect } from '../database/index.js';
-import { stringBoolean } from '../utils/index.js';
+import { connect } from '../database/index';
+import { stringBoolean } from '../utils/index';
 import { config } from 'dotenv';
 
 export const getCardOnSiteByCardId = async (request, context) => {
@@ -16,7 +16,7 @@ export const getCardOnSiteByCardId = async (request, context) => {
 
     con.end();
 
-    if (result[0].length === 0) {
+    if (Array(result[0]).length === 0) {
         return {
             cardOnSite: false,
             cardNotBeenOnSiteYet: true

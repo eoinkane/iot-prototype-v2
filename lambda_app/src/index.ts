@@ -1,5 +1,5 @@
-import { connect } from './database/index.js';
-import { toDBDateTimeString } from './utils/index.js'
+import { connect } from './database/index';
+import { toDBDateTimeString } from './utils/index'
 
 import { config } from 'dotenv';
 config();

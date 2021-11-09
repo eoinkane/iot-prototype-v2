@@ -1,6 +1,6 @@
-import { connect } from '../database/index.js';
+import { connect } from '../database/index';
 import { config } from 'dotenv';
-import { stringBoolean, toDBDateTimeString } from '../utils/index.js';
+import { stringBoolean, toDBDateTimeString } from '../utils/index';
 
 
 export const tapCard = async (request, context) => {
