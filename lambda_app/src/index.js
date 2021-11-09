@@ -1,20 +1,5 @@
-import { createConnection } from 'mysql2/promise';
-import { toDatetimeISOString, toDBDateTimeString } from './utils/index.js'
-
-const connect = async () => await createConnection({
-    host: 'localhost',
-    port: '6033',
-    user: 'root',
-    password: 'my_secret_password',
-    database: 'app_db',
-    typeCast: (field, next) => {
-        if (field.type === 'DATETIME') {
-            return toDatetimeISOString(field.string());
-        } else {
-            return next();
-        }
-    }
-});
+import { connect } from './database/index.js';
+import { toDBDateTimeString } from './utils/index.js'
 
 const stringBoolean = (string) => {
     if (string === 'true') return true;
