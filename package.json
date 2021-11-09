@@ -6,7 +6,7 @@
   },
   "scripts": {
     "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
-    "compile:lambda-app": "cd lambda_app && npm run clean && npm run compile && cd ../",
+    "compile:lambda-app": "cd lambda_app && npm run clean && npm run compile:src && cd ../",
     "build:lambda-app": "mkdir -p build && cd lambda_app && npm run build && cp -r lambda-app-build ../build && cd ../",
     "clean": "rm -r cdk.out build || true && cd lambda_app && npm run clean && cd ../",
     "cdk": "cdk",
