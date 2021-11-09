@@ -14,6 +14,15 @@ export const handler = lambdaRouterHandler({
                 path: '/card/tap',
                 method: 'POST',
                 action: tapCard
+            },
+            {
+                path: '/webhook',
+                method: 'POST',
+                action: async (request, context) => {
+                    console.log("POST /webhook called");
+                    console.log(request.body);
+                    return "You called me";
+                } 
             }
         ]
     }
