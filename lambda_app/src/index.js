@@ -1,6 +1,9 @@
 import { connect } from './database/index.js';
 import { toDBDateTimeString } from './utils/index.js'
 
+import { config } from 'dotenv';
+config();
+
 const stringBoolean = (string) => {
     if (string === 'true') return true;
     if (string === 'false') return false;
