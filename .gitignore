@@ -6,6 +6,8 @@ cdk.out
 
 **/.env
 lambda-app-build
+lambda_app/src/*/**.js
+lambda_app/src/*.js
 
 build
 cdk.out
