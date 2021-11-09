@@ -6,3 +6,6 @@ cdk.out
 
 **/.env
 lambda-app-build
+
+build
+cdk.out
