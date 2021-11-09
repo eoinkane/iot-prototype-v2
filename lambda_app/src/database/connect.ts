@@ -14,5 +14,5 @@ export const connect = async () => await createConnection({
             return next();
         }
     },
-    connectTimeout: 60
+    connectTimeout: 60000
 });
