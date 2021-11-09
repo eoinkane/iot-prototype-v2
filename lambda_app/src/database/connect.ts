@@ -13,5 +13,6 @@ export const connect = async () => await createConnection({
         } else {
             return next();
         }
-    }
+    },
+    connectTimeout: 60
 });
