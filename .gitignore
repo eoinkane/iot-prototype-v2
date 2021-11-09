@@ -9,5 +9,8 @@ lambda-app-build
 lambda_app/src/*/**.js
 lambda_app/src/*.js
 
+lambda_app/test/*/**.js
+lambda_app/test/*.js
+
 build
 cdk.out
