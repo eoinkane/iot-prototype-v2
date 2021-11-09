@@ -27,7 +27,7 @@ export const handler = lambdaRouterHandler({
             {
                 path: '/setup',
                 method: 'GET',
-                action: 
+                action: setup
             }
         ]
     }
