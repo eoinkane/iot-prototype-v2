@@ -8,6 +8,8 @@
   },
   "scripts": {
     "run-local-lambda": "node test/local/index.js",
+    "build": "mkdir lambda-app-build && cp -r src lambda-app-build && cp -r node_modules lambda-app-build && cd lambda-app-build && zip -r lambda-app-build.zip . && cd ../",
+    "clean": "rm -rf lambda-app-build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
