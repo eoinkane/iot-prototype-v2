@@ -1,4 +1,5 @@
 import { handler as lambdaRouterHandler } from 'aws-lambda-router';
+import { getCardOnSiteByCardId } from './paths/index.js';
 
 export const handler = lambdaRouterHandler({
     proxyIntegration: {
@@ -10,9 +11,7 @@ export const handler = lambdaRouterHandler({
                 path: '/card/on-site/{cardId}',
                 method: 'GET',
                 // we can use the path param 'cardId' in the action call:
-                action: async (request, context) => {
-                    return "You called me with: " + request.paths.cardId;
-                }
+                action: getCardOnSiteByCardId
             }
         ]
     }
