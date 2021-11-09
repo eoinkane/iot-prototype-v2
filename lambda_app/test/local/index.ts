@@ -1,5 +1,5 @@
-import { handler } from "../../src/app.js";
-import event from "./data.js";
+import { handler } from "../../src/index";
+import event from "./data";
 
 (async () => {
     event.path = process.argv[2] ? process.argv[2] : "/card/on-site/001";
@@ -8,4 +8,4 @@ import event from "./data.js";
     const proxyResult = await handler(event);
     console.log(proxyResult);
     console.log(JSON.parse(proxyResult.body));
-})()
+})();
