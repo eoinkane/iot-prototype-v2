@@ -1,0 +1,33 @@
+{
+    "body": "{\"staffId\":\"001\",\"cardId\":\"001\",\"zone\":\"A1\",\"dateTappedIsoString\":\"2021-11-09T13:10:09.092Z\"}",
+    "resource": "/card/tap",
+    "path": "/card/tap",
+    "httpMethod": "POST",
+    "isBase64Encoded": true,
+    "requestContext": {
+      "accountId": "111111111111",
+      "resourceId": "111111",
+      "stage": "stage",
+      "requestId": "c6af9ac6-7b61-11e6-9a41-93e8deadbeef",
+      "requestTime": "09/Apr/2015:12:34:56 +0000",
+      "requestTimeEpoch": 1428582896000,
+      "identity": {
+        "cognitoIdentityPoolId": null,
+        "accountId": null,
+        "cognitoIdentityId": null,
+        "caller": null,
+        "accessKey": null,
+        "sourceIp": "127.0.0.1",
+        "cognitoAuthenticationType": null,
+        "cognitoAuthenticationProvider": null,
+        "userArn": null,
+        "userAgent": "Custom User Agent String",
+        "user": null
+      },
+      "path": "/card/tap",
+      "resourcePath": "/{proxy+}",
+      "httpMethod": "POST",
+      "apiId": "1234567890",
+      "protocol": "HTTP/1.1"
+    }
+  }
