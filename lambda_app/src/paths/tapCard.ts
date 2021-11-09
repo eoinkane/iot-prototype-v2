@@ -4,8 +4,12 @@ import { stringBoolean, toDBDateTimeString } from '../utils/index';
 
 
 export const tapCard = async (request, context) => {
+    console.log("tap card function called");
+    console.log("loading env values");
     config();
     const {staffId, cardId, zone, dateTappedIsoString} = request.body;
+    console.log("card tap props", {staffId, cardId, zone, dateTappedIsoString});
+    console.log("connecting to the database");
     const con = await connect();
 
     console.log(`card ${cardId} tapped at `)
