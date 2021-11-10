@@ -14,3 +14,4 @@ lambda_app/test/*.js
 
 build
 cdk.out
+.env

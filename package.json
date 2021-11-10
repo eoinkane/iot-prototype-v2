@@ -15,7 +15,8 @@
   "devDependencies": {
     "@aws-cdk/assertions": "1.131.0",
     "aws-cdk": "1.131.0",
-    "jest": "^26.4.2"
+    "jest": "^26.4.2",
+    "dotenv": "^10.0.0"
   },
   "dependencies": {
     "@aws-cdk/aws-apigateway": "^1.132.0",
