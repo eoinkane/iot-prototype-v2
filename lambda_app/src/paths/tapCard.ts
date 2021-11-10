@@ -1,7 +1,9 @@
 import { connect } from '../database/index';
 import { config } from 'dotenv';
 import { stringBoolean, toDBDateTimeString } from '../utils/index';
+var Particle = require('particle-api-js');
 
+const particle = new Particle();
 
 export const tapCard = async (request, context) => {
     console.log("tap card function called");
@@ -36,6 +38,8 @@ export const tapCard = async (request, context) => {
         accessGranted: accessGrantedPermission[0][0]['access_granted'],
         tapSuccess: insertTapResult[0].hasOwnProperty('affectedRows') && insertTapResult[0].affectedRows === 1
     };
+
+    particle.callFunction({ deviceId: process.env.PARTICLE_DEVICE_ID, name: body.accessGranted ? 'flashGreenLed' : 'flashRedLed', argument: 'command', auth: process.env.PARTICLE_TOKEN })
 
     return body;
 }
