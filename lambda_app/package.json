@@ -19,7 +19,8 @@
   "dependencies": {
     "aws-lambda-router": "^0.11.0",
     "dotenv": "^10.0.0",
-    "mysql2": "^2.3.0"
+    "mysql2": "^2.3.0",
+    "particle-api-js": "^9.1.0"
   },
   "devDependencies": {
     "ts-node": "^10.4.0",
