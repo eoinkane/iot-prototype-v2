@@ -9,7 +9,8 @@ export const tapCard = async (request, context) => {
     console.log("tap card function called");
     console.log("loading env values");
     config();
-    const {staffId, cardId, zone, dateTappedIsoString} = request.body;
+    const { staffId, cardId, zone } = JSON.parse(request.body.data);
+    const dateTappedIsoString = request.body['published_at'];
     console.log("card tap props", {staffId, cardId, zone, dateTappedIsoString});
     console.log("connecting to the database");
     const con = await connect();
@@ -39,7 +40,10 @@ export const tapCard = async (request, context) => {
         tapSuccess: insertTapResult[0].hasOwnProperty('affectedRows') && insertTapResult[0].affectedRows === 1
     };
 
-    particle.callFunction({ deviceId: process.env.PARTICLE_DEVICE_ID, name: body.accessGranted ? 'flashGreenLed' : 'flashRedLed', argument: 'command', auth: process.env.PARTICLE_TOKEN })
+    console.log("calling particle funcition");
+    console.log(`will call the ${body.accessGranted ? 'flashGreenLed' : 'flashRedLed'} function`)
+    const result = await particle.callFunction({ deviceId: process.env.PARTICLE_DEVICE_ID, name: body.accessGranted ? 'flashGreenLed' : 'flashRedLed', argument: 'command', auth: process.env.PARTICLE_TOKEN });
+    console.log(result);
 
     return body;
 }
