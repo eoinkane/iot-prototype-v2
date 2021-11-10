@@ -16,7 +16,7 @@ export const getCardOnSiteByCardId = async (request, context) => {
 
     con.end();
 
-    if (Array(result[0]).length === 0) {
+    if (result[0].length === 0) {
         return {
             cardOnSite: false,
             cardNotBeenOnSiteYet: true
