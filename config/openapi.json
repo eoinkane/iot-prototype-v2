@@ -1,0 +1,53 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "iot-prototype-v2-api",
+        "description": "iot-prototype-v2 Rest API",
+        "version": "1.0.1"
+    },
+    "paths": {
+        "/webhook": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "content": {
+                            "application/json": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "uri": "arn:aws:apigateway:(REGION):lambda:path/2015-03-31/functions/arn:aws:lambda:(REGION):(ACCOUNT_ID):function:(FUNCTION_NAME)/invocations",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "contentHandling": "CONVERT_TO_TEXT",
+                    "type": "aws_proxy"
+                }
+            }
+        }
+    },
+    "x-amazon-apigateway-policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": [
+                    "execute-api:GET",
+                    "execute-api:Invoke",
+                    "execute-api:POST"
+                ],
+                "Resource": "arn:aws:execute-api:(REGION):(ACCOUNT_ID):*"
+            }
+        ]
+    }
+}
