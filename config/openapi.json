@@ -33,6 +33,149 @@
                     "type": "aws_proxy"
                 }
             }
+        },
+        "/card/on-site/{cardId}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "cardId",
+                        "in": "path",
+                        "description": "The cardId to retrieve the status for.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },                
+                "x-amazon-apigateway-integration": {
+                    "uri": "arn:aws:apigateway:(REGION):lambda:path/2015-03-31/functions/arn:aws:lambda:(REGION):(ACCOUNT_ID):function:(FUNCTION_NAME)/invocations",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "contentHandling": "CONVERT_TO_TEXT",
+                    "type": "aws_proxy"
+                }
+            }
+        },
+        "/card/tap": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },                
+                "x-amazon-apigateway-integration": {
+                    "uri": "arn:aws:apigateway:(REGION):lambda:path/2015-03-31/functions/arn:aws:lambda:(REGION):(ACCOUNT_ID):function:(FUNCTION_NAME)/invocations",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "contentHandling": "CONVERT_TO_TEXT",
+                    "type": "aws_proxy"
+                }
+            }
+        },
+        "/setup": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },                
+                "x-amazon-apigateway-integration": {
+                    "uri": "arn:aws:apigateway:(REGION):lambda:path/2015-03-31/functions/arn:aws:lambda:(REGION):(ACCOUNT_ID):function:(FUNCTION_NAME)/invocations",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "contentHandling": "CONVERT_TO_TEXT",
+                    "type": "aws_proxy"
+                }
+            }
+        },
+        "/teardown": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },                
+                "x-amazon-apigateway-integration": {
+                    "uri": "arn:aws:apigateway:(REGION):lambda:path/2015-03-31/functions/arn:aws:lambda:(REGION):(ACCOUNT_ID):function:(FUNCTION_NAME)/invocations",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "contentHandling": "CONVERT_TO_TEXT",
+                    "type": "aws_proxy"
+                }
+            }
         }
     },
     "x-amazon-apigateway-policy": {
