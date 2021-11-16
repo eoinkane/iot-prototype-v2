@@ -7,12 +7,15 @@
     "test": "test"
   },
   "scripts": {
+    "compile:scripts": "tsc scripts/**/*.ts",
     "compile:src": "tsc src/**.ts",
     "compile:test": "tsc test/**/*.ts",
     "run-local-lambda": "node test/local/index.js",
+    "update-webhook": "node scripts/particle-update-webhook/index.js $(aws cloudformation describe-stacks --stack-name ProtoV2Stack | jq '.Stacks | .[] | .Outputs | reduce .[] as $i ({}; .[$i.OutputKey] =  $i.OutputValue)')",
     "build": "mkdir -p lambda-app-build && cp -r src/** lambda-app-build && cp package* lambda-app-build && cd lambda-app-build && npm i --only=prod && zip -r lambda-app-build.zip . && cd ../",
-    "clean": "rm -rf lambda-app-build src/**/*.js || true",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf lambda-app-build src/**/*.js src/*.js test/**/*.js test/*.js scripts/**/*.js scripts/*.js || true",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts-node": "ts-node" 
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +26,7 @@
     "particle-api-js": "^9.1.0"
   },
   "devDependencies": {
+    "axios": "^0.24.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   }

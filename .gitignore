@@ -12,6 +12,9 @@ lambda_app/src/*.js
 lambda_app/test/*/**.js
 lambda_app/test/*.js
 
+lambda_app/scripts/*/**.js
+lambda_app/scripts/*.js
+
 build
 cdk.out
 .env
