@@ -17,7 +17,8 @@
     "clean": "rm -rf lambda-app-build src/**/*.js src/*.js test/**/*.js test/*.js scripts/**/*.js scripts/*.js || true",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ts-node": "ts-node",
-    "nodemon": "nodemon"
+    "nodemon": "nodemon",
+    "express-server:dev": "nodemon --watch src --watch test ./test/local/express.ts"
   },
   "author": "",
   "license": "ISC",
