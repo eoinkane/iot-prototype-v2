@@ -1,5 +1,5 @@
 import { handler as lambdaRouterHandler } from 'aws-lambda-router';
-import { getCardOnSiteByCardId, tapCard, setup, teardown } from './paths/index';
+import { getCardOnSiteByCardId, tapCard, setup, teardown, getStaff } from './paths/index';
 
 export const routes: {
   path: string;
@@ -35,6 +35,11 @@ export const routes: {
         method: 'GET',
         action: teardown,
       },
+      {
+        path: '/staff',
+        method: 'GET', 
+        action: getStaff
+      }
 ];
 
 export const handler = lambdaRouterHandler({
