@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { routes } from '../../src/index';
 import { config } from 'dotenv';
 
@@ -8,6 +9,7 @@ const app = express();
 const port = process.env.EXPRESS_PORT;
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
