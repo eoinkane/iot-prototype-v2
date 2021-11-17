@@ -1,6 +1,7 @@
 import { connect } from '../database/index';
 import { stringBoolean } from '../utils/index';
 import { config } from 'dotenv';
+import { RowDataPacket } from 'mysql2';
 
 export const getCardOnSiteByCardId = async (request, context) => {
     config();
@@ -16,7 +17,7 @@ export const getCardOnSiteByCardId = async (request, context) => {
 
     con.end();
 
-    if (result[0].length === 0) {
+    if ((result[0] as RowDataPacket[]).length === 0) {
         return {
             cardOnSite: false,
             cardNotBeenOnSiteYet: true
