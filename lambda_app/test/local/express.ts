@@ -1,7 +1,11 @@
 import express from 'express';
 import { routes } from '../../src/index';
+import { config } from 'dotenv';
+
+config();
+
 const app = express();
-const port = 3000;
+const port = process.env.EXPRESS_PORT;
 
 app.use(express.json());
 
@@ -36,10 +40,6 @@ routes.forEach((route) => {
         
           event['paths'] = paths;
       };
-
-      console.log(req.params);
-
-      console.log(event);
       const call = await route.action(event, null);
       res.send(call);
     }
