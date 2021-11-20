@@ -1,1 +1,2 @@
-export { default } from './ViewStaff';
+export { default as ViewStaffList } from './ViewStaffList';
+export { default as ViewStaff } from './ViewStaff';
