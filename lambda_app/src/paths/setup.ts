@@ -45,7 +45,13 @@ export const setup = async (request, context) => {
         "INSERT INTO `cards` (expiry_date) VALUES (\"2022-10-08 20:52:40\");"
     );
     await con.query(
-        "INSERT INTO `cards` (expiry_date) VALUES (\"2022-11-08 20:52:40\");"
+        "INSERT INTO `cards` (expiry_date) VALUES (\"2022-11-09 20:52:40\");"
+    );
+    await con.query(
+        "INSERT INTO `cards` (expiry_date) VALUES (\"2022-11-10 20:52:40\");"
+    );
+    await con.query(
+        "INSERT INTO `cards` (expiry_date) VALUES (\"2022-11-11 20:52:40\");"
     );
 
     console.log("cards table data inserted");
@@ -67,10 +73,16 @@ export const setup = async (request, context) => {
     console.log("staff table created");
 
     await con.query(
-        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Jack', 'Beatty', 'CEO', 'A3', '001');"
+        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Jack', 'Beatty', 'CEO', 'A2', '001');"
     );
     await con.query(
-        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Tim', 'Jule', 'Front of House', 'A2', '002');"
+        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Tim', 'Jule', 'Front of House', 'A1', '002');"
+    );
+    await con.query(
+        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Poppy', 'Bingo', 'Executive', 'A2', '003');"
+    );
+    await con.query(
+        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Oliver', 'Wao', 'Facilities', 'A1', '004');"
     );
 
     console.log("staff table data inserted");
