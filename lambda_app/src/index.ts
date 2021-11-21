@@ -54,6 +54,7 @@ export const routes: {
 
 export const handler = lambdaRouterHandler({
   proxyIntegration: {
+    cors: true,
     removeBasePath: true,
     routes,
   },
