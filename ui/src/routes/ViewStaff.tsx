@@ -106,13 +106,6 @@ const ViewStaff = () => {
               <Typography sx={{ fontSize: 18 }}>
                 {staffData?.currentCardId}
               </Typography>
-              <button
-                onClick={() => {
-                  console.log();
-                }}
-              >
-                aa
-              </button>
             </Card>
           </Grid>
           <Grid item sm={6}>
