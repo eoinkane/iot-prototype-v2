@@ -7,8 +7,9 @@ export const getStaffOnSite = async (request, context) => {
   const conn = await connect();
 
   const staff = await conn.query(
-    'SELECT `staff`.* FROM (SELECT `card_id` FROM `taps` GROUP BY `card_id` HAVING COUNT(`card_id`) % 2 != 0) ' +
-    'AS `on_site_taps` JOIN `staff` ON `on_site_taps`.`card_id` = `staff`.`current_card_id`;'
+    'SELECT `staff`.* FROM (SELECT `card_id` FROM `taps` WHERE `success` = 1 GROUP BY `card_id` ' + 
+    'HAVING COUNT(`card_id`) % 2 != 0) AS `on_site_taps` JOIN `staff` ' +
+    'ON `on_site_taps`.`card_id` = `staff`.`current_card_id`;'
   );
 
   const body = (staff[0] as RowDataPacket[]).map((cur) => {

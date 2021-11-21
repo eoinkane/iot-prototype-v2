@@ -111,7 +111,7 @@ const ViewStaffOnSiteList = () => {
             }}
             onSelectionChange={rowSelectedHandler}
             data={staff}
-            title="All Staff"
+            title="Staff On Site"
           />
         </Box>
       </>
