@@ -1,47 +1,34 @@
 const openApi = require('./openapi.json');
+const options = require('./options.json');
 
 const getOpenApi = (accountId, region, functionName) => {
-    // /webhook
-    openApi.paths['/webhook'].post['x-amazon-apigateway-integration'].uri = openApi.paths['/webhook'].post['x-amazon-apigateway-integration'].uri.replace("(ACCOUNT_ID)", accountId);
+  const paths = Object.keys(openApi.paths);
 
-    openApi.paths['/webhook'].post['x-amazon-apigateway-integration'].uri = openApi.paths['/webhook'].post['x-amazon-apigateway-integration'].uri.replace("(REGION)", region).replace("(REGION)", region);
+  paths.forEach((path) => {
+    openApi.paths[path][Object.keys(openApi.paths[path])[0]][
+      'x-amazon-apigateway-integration'
+    ].uri = openApi.paths[path][Object.keys(openApi.paths[path])[0]][
+      'x-amazon-apigateway-integration'
+    ].uri.replace('(ACCOUNT_ID)', accountId);
 
-    openApi.paths['/webhook'].post['x-amazon-apigateway-integration'].uri = openApi.paths['/webhook'].post['x-amazon-apigateway-integration'].uri.replace("(FUNCTION_NAME)", functionName);
+    openApi.paths[path][Object.keys(openApi.paths[path])[0]][
+      'x-amazon-apigateway-integration'
+    ].uri = openApi.paths[path][Object.keys(openApi.paths[path])[0]][
+      'x-amazon-apigateway-integration'
+    ].uri
+      .replace('(REGION)', region)
+      .replace('(REGION)', region);
 
-    // /card/on-site/{cardId}
-    openApi.paths['/card/on-site/{cardId}'].get['x-amazon-apigateway-integration'].uri = openApi.paths['/card/on-site/{cardId}'].get['x-amazon-apigateway-integration'].uri.replace("(ACCOUNT_ID)", accountId);
+    openApi.paths[path][Object.keys(openApi.paths[path])[0]][
+      'x-amazon-apigateway-integration'
+    ].uri = openApi.paths[path][Object.keys(openApi.paths[path])[0]][
+      'x-amazon-apigateway-integration'
+    ].uri.replace('(FUNCTION_NAME)', functionName);
 
-    openApi.paths['/card/on-site/{cardId}'].get['x-amazon-apigateway-integration'].uri = openApi.paths['/card/on-site/{cardId}'].get['x-amazon-apigateway-integration'].uri.replace("(REGION)", region).replace("(REGION)", region);
+    openApi.paths[path] = { ...openApi.paths[path], options };
+  });
 
-    openApi.paths['/card/on-site/{cardId}'].get['x-amazon-apigateway-integration'].uri = openApi.paths['/card/on-site/{cardId}'].get['x-amazon-apigateway-integration'].uri.replace("(FUNCTION_NAME)", functionName);
-
-    // /card/tap
-    openApi.paths['/card/tap'].post['x-amazon-apigateway-integration'].uri = openApi.paths['/card/tap'].post['x-amazon-apigateway-integration'].uri.replace("(ACCOUNT_ID)", accountId);
-
-    openApi.paths['/card/tap'].post['x-amazon-apigateway-integration'].uri = openApi.paths['/card/tap'].post['x-amazon-apigateway-integration'].uri.replace("(REGION)", region).replace("(REGION)", region);
-
-    openApi.paths['/card/tap'].post['x-amazon-apigateway-integration'].uri = openApi.paths['/card/tap'].post['x-amazon-apigateway-integration'].uri.replace("(FUNCTION_NAME)", functionName);
-
-    // /setup
-    openApi.paths['/setup'].get['x-amazon-apigateway-integration'].uri = openApi.paths['/setup'].get['x-amazon-apigateway-integration'].uri.replace("(ACCOUNT_ID)", accountId);
-
-    openApi.paths['/setup'].get['x-amazon-apigateway-integration'].uri = openApi.paths['/setup'].get['x-amazon-apigateway-integration'].uri.replace("(REGION)", region).replace("(REGION)", region);
-
-    openApi.paths['/setup'].get['x-amazon-apigateway-integration'].uri = openApi.paths['/setup'].get['x-amazon-apigateway-integration'].uri.replace("(FUNCTION_NAME)", functionName);
-
-    // /teardown
-    openApi.paths['/teardown'].get['x-amazon-apigateway-integration'].uri = openApi.paths['/teardown'].get['x-amazon-apigateway-integration'].uri.replace("(ACCOUNT_ID)", accountId);
-
-    openApi.paths['/teardown'].get['x-amazon-apigateway-integration'].uri = openApi.paths['/teardown'].get['x-amazon-apigateway-integration'].uri.replace("(REGION)", region).replace("(REGION)", region);
-
-    openApi.paths['/teardown'].get['x-amazon-apigateway-integration'].uri = openApi.paths['/teardown'].get['x-amazon-apigateway-integration'].uri.replace("(FUNCTION_NAME)", functionName);
-
-    // api gateway policy
-    openApi['x-amazon-apigateway-policy'].Statement[0].Resource = openApi['x-amazon-apigateway-policy'].Statement[0].Resource.replace("(ACCOUNT_ID)", accountId);
-
-    openApi['x-amazon-apigateway-policy'].Statement[0].Resource = openApi['x-amazon-apigateway-policy'].Statement[0].Resource.replace("(REGION)", region)
-
-    return openApi;
-}
+  return openApi;
+};
 
 module.exports = { getOpenApi };
