@@ -70,7 +70,7 @@ void setup() {
   // It's important you do this here, inside the setup() function rather than outside it or in the loop function.
   pinMode(redLed, OUTPUT);
   pinMode(greenLed, OUTPUT);
-  pinMode(inputpin, INPUT);
+  // pinMode(inputpin, INPUT);
   
   Particle.function("flashRedLed", flash_red_led);
   Particle.function("flashGreenLed", flash_green_led);
@@ -115,12 +115,12 @@ void loop() {
   for (int i = 1; i <= 5; i++)
     g1.insert("00" + std::to_string(i));
     
-  if(digitalRead(inputpin) == HIGH){
-    Serial.println("Button pressed");
-    flash_red_led("command");
-    delay(2000);
-    flash_green_led("command");
-  }
+//   if(digitalRead(inputpin) == HIGH){
+//     Serial.println("Button pressed");
+//     flash_red_led("command");
+//     delay(2000);
+//     flash_green_led("command");
+//   }
 
   // Prepare key - all keys are set to FFFFFFFFFFFFh at chip delivery from the factory.
   MFRC522::MIFARE_Key key;
@@ -210,7 +210,7 @@ void loop() {
   
   Serial.println(F("\n**End Reading**\n"));
   
-  String zone = "A3";
+  String zone = "A2";
 
   Particle.publish("iot-prototype-v2-card-tapped", String::format("{\"staffId\":\"%s\",\"cardId\":\"%s\",\"zone\":\"%s\"}", s2.c_str(), s1.c_str(), zone.c_str()));
 
