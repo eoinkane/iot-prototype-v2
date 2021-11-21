@@ -123,7 +123,7 @@ const ViewStaff = () => {
               {!(
                 Object(cardData).hasOwnProperty('cardNotBeenOnSiteYet') &&
                 cardData?.cardNotBeenOnSiteYet
-              ) ? (
+              ) || cardData?.numberOfTaps >= 1 ? (
                 <CheckCircleIcon style={{ color: 'green', marginTop: '10' }} />
               ) : (
                 <CancelIcon style={{ color: 'red', marginTop: '10' }} />
@@ -134,10 +134,7 @@ const ViewStaff = () => {
               >
                 Card On Site:
               </Typography>
-              {!(
-                Object(cardData).hasOwnProperty('cardNotBeenOnSiteYet') &&
-                cardData?.cardNotBeenOnSiteYet
-              ) || cardData?.numberOfTaps >= 1 ? (
+              {cardData?.cardOnSite ? (
                 <CheckCircleIcon style={{ color: 'green', marginTop: '10' }} />
               ) : (
                 <CancelIcon style={{ color: 'red', marginTop: '10' }} />

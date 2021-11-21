@@ -48,7 +48,6 @@ const Home = () => (
         <Paper elevation={0}>
           <List aria-label="main links">
             <ListItemLink to="/staff" primary="View All Staff" />
-            <ListItemLink to="/drafts" primary="Drafts" />
           </List>
           <Divider />
         </Paper>
