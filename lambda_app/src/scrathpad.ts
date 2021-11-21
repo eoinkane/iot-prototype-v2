@@ -2,6 +2,7 @@ import { connect } from './database/index';
 import { toDBDateTimeString } from './utils/index'
 
 import { config } from 'dotenv';
+import { ResultSetHeader } from 'mysql2';
 config();
 
 const stringBoolean = (string) => {
@@ -59,7 +60,7 @@ const cardTapped = async (staffId, cardId, zone, dateTappedIsoString) => {
 
     const body = { 
         accessGranted: accessGrantedPermission[0][0]['access_granted'],
-        tapSuccess: insertTapResult[0].hasOwnProperty('affectedRows') && insertTapResult[0].affectedRows === 1
+        tapSuccess: insertTapResult[0].hasOwnProperty('affectedRows') && (insertTapResult[0] as ResultSetHeader).affectedRows === 1
     };
 
     return body;
