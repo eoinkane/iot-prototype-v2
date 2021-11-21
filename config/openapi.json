@@ -289,7 +289,7 @@
         "Statement": [{
             "Effect": "Allow",
             "Principal": "*",
-            "Action": ["execute-api:GET", "execute-api:Invoke", "execute-api:POST"],
+            "Action": ["execute-api:GET", "execute-api:Invoke", "execute-api:POST", "execute-api:OPTIONS"],
             "Resource": "arn:aws:execute-api:(REGION):(ACCOUNT_ID):*"
         }]
     }
