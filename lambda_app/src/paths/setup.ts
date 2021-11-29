@@ -61,6 +61,7 @@ export const setup = async (request, context) => {
         "`staff_id` INT(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, " +
         "`first_name` VARCHAR(30) NOT NULL, " +
         "`last_name` VARCHAR(30) NOT NULL, " +
+        "`phone` VARCHAR (13) NOT NULL, " +
         "`role` VARCHAR(30) NOT NULL, " +
         "`access_permission` VARCHAR(2) NOT NULL, " +
         "`current_card_id` INT(3) UNSIGNED ZEROFILL NOT NULL, " +
@@ -73,16 +74,16 @@ export const setup = async (request, context) => {
     console.log("staff table created");
 
     await con.query(
-        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Jack', 'Beatty', 'CEO', 'A2', '001');"
+        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `phone`,  `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Jack', 'Beatty', '" + process.env.TEST_PHONE_NUMBER + "', 'CEO', 'A2', '001');"
     );
     await con.query(
-        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Tim', 'Jule', 'Front of House', 'A1', '002');"
+        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `phone`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Tim', 'Jule', '" + process.env.TEST_PHONE_NUMBER + "', 'Front of House', 'A1', '002');"
     );
     await con.query(
-        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Poppy', 'Bingo', 'Executive', 'A2', '003');"
+        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `phone`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Poppy', 'Bingo', '" + process.env.TEST_PHONE_NUMBER + "', 'Executive', 'A2', '003');"
     );
     await con.query(
-        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Oliver', 'Wao', 'Facilities', 'A1', '004');"
+        "INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `phone`, `role`, `access_permission`, `current_card_id`) VALUES (NULL, 'Oliver', 'Wao', '" + process.env.TEST_PHONE_NUMBER + "', 'Facilities', 'A1', '004');"
     );
 
     console.log("staff table data inserted");
