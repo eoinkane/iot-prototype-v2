@@ -32,6 +32,7 @@ const ViewStaff = () => {
   }>();
 
   useMemo(() => {
+    console.log(state);
     if (state === null) {
       (async () => {
         const staffResp = await axios.get(
@@ -52,18 +53,20 @@ const ViewStaff = () => {
   }, []);
 
   useMemo(() => {
-    (async () => {
-      const cardResp = await axios.get(
-        `${process.env.REACT_APP_API_URL}card/on-site/${staffData?.currentCardId}`
-      );
+    if (staffData) {    
+      (async () => {
+        const cardResp = await axios.get(
+          `${process.env.REACT_APP_API_URL}card/on-site/${staffData?.currentCardId}`
+        );
 
-      if (cardResp.status === 200) {
-        setCardData(cardResp.data);
-        console.log(cardData);
-      } else {
-        setError(true);
-      }
-    })();
+        if (cardResp.status === 200) {
+          setCardData(cardResp.data);
+          console.log(cardData);
+        } else {
+          setError(true);
+        }
+      })();
+    }
   }, [staffData]);
 
   return (
