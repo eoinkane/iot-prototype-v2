@@ -12,7 +12,7 @@
     "compile:test": "tsc test/**/*.ts",
     "compile": "tsc",
     "run-local-lambda": "ts-node test/local/index.ts",
-    "update-webhook": "node scripts/particle-update-webhook/index.js $(aws cloudformation describe-stacks --stack-name ProtoV2Stack | jq '.Stacks | .[] | .Outputs | reduce .[] as $i ({}; .[$i.OutputKey] =  $i.OutputValue)')",
+    "update-webhook": "ts-node scripts/particle-update-webhook/index.ts $(aws cloudformation describe-stacks --stack-name ProtoV2Stack | jq '.Stacks | .[] | .Outputs | reduce .[] as $i ({}; .[$i.OutputKey] =  $i.OutputValue)')",
     "build": "mkdir -p lambda-app-build && cp -r src/** lambda-app-build && cp package* lambda-app-build && cd lambda-app-build && npm i --only=prod && zip -r lambda-app-build.zip . && cd ../",
     "clean": "rm -rf lambda-app-build src/**/*.js src/*.js test/**/*.js test/*.js scripts/**/*.js scripts/*.js || true",
     "test": "echo \"Error: no test specified\" && exit 1",
